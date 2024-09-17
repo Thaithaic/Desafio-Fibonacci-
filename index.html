@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Fibonacci</title>
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eaeaea;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Estilo do container principal */
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos dos inputs e botões */
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Estilo da mensagem de resultado */
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            input, button {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .result {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificar Fibonacci</h1>
+        <input type="number" id="numero" placeholder="Digite um número" />
+        <button onclick="verificarFibonacci()">Verificar</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function verificarFibonacci() {
+            const numero = parseInt(document.getElementById('numero').value);
+            let a = 0, b = 1;
+            let pertence = false;
+
+            while (b <= numero) {
+                if (b === numero) {
+                    pertence = true;
+                    break;
+                }
+                let temp = a;
+                a = b;
+                b = temp + b;
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            if (pertence) {
+                resultadoDiv.innerHTML = `O número ${numero} pertence à sequência de Fibonacci.`;
+                resultadoDiv.style.color = "#28a745";
+            } else {
+                resultadoDiv.innerHTML = `O número ${numero} não pertence à sequência de Fibonacci.`;
+                resultadoDiv.style.color = "#dc3545";
+            }
+        }
+    </script>
+</body>
+</html>
